@@ -466,6 +466,9 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import RegistrationPage from './pages/RegistrationPage';
 import ManagementPage from './pages/ManagementPage';
+import { Amplify } from 'aws-amplify';
+import awsExports from './aws-exports.js';
+Amplify.configure(awsExports);
 
 export default function App() {
   const [page, setPage] = useState('register'); // 'register' or 'manage'
