@@ -30,7 +30,7 @@ export default function WhatsAppSender({ sessions = [] }) {
         const message = `Simsouls Session Confirmation:\n- Child: ${selectedSession.child_name}\n- Doctor: ${selectedSession.doctor_name}\n- Date: ${new Date(selectedSession.session_date).toLocaleDateString()}\n- Notes: ${selectedSession.notes || 'N/A'}`;
 
         try {
-            const response = await fetch(`http://localhost:4000/send-message`, {
+            const response = await fetch(`/send-message`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ to: cleanedPhoneNumber, message: message })

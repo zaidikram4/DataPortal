@@ -57,7 +57,7 @@ export default function RegistrationPage({ onChildRegistered }) {
     setIsLoading(true);
 
     try {
-        const response = await fetch('http://localhost:4000/children', {
+        const response = await fetch('/children', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ childName, childDob, childGender })

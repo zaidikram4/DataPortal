@@ -10,7 +10,7 @@ export default function EditChildModal({ child, onClose, onSave }) {
         e.preventDefault();
         setIsSaving(true);
         try {
-            const response = await fetch(`http://localhost:4000/children/${child.id}`, {
+            const response = await fetch(`/children/${child.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ childName, childDob, childGender })

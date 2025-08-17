@@ -123,9 +123,9 @@ export default function ManagementPage({ lastSubmittedChild }) {
         setIsLoading(true);
         try {
             const [childrenRes, doctorsRes, sessionsRes] = await Promise.all([
-                fetch('http://localhost:4000/children'),
-                fetch('http://localhost:4000/doctors'),
-                fetch('http://localhost:4000/sessions')
+                fetch('/children'),
+                fetch('/doctors'),
+                fetch('/sessions')
             ]);
             if (!childrenRes.ok || !doctorsRes.ok || !sessionsRes.ok) {
                 throw new Error('Failed to fetch all necessary data.');
@@ -156,14 +156,14 @@ export default function ManagementPage({ lastSubmittedChild }) {
     const handleDelete = async (childId) => {
         if (window.confirm('Are you sure you want to delete this child?')) {
             try {
-                await fetch(`http://localhost:4000/children/${childId}`, { method: 'DELETE' });
+                await fetch(`/children/${childId}`, { method: 'DELETE' });
                 fetchData();
             } catch (err) {
                 alert(err.message);
             }
         }
     };
-
+// http://localhost:4000
     const handleSessionBooked = () => {
         setAlertInfo({ show: true, type: 'success', title: 'Session Booked!', message: 'The new session has been added to the history.' });
         fetchData(); // This reloads the data
@@ -196,7 +196,7 @@ export default function ManagementPage({ lastSubmittedChild }) {
         }
 
         try {
-            const response = await fetch('http://localhost:4000/sessions', {
+            const response = await fetch('/sessions', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(sessionData)
